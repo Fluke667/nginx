@@ -109,10 +109,12 @@ RUN set -x \
     && apk add --no-cache tzdata \
 # forward request and error logs to docker log collector
     && ln -sf /dev/stdout /var/log/nginx/access.log \
-    && ln -sf /dev/stderr /var/log/nginx/error.log
+    && ln -sf /dev/stderr /var/log/nginx/error.log \
+    && ls /usr/lib/nginx/modules
 
 EXPOSE 80
 
 STOPSIGNAL SIGTERM
+
 
 CMD ["nginx", "-g", "daemon off;"]
